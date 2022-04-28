@@ -1,8 +1,5 @@
-eureka:
-  client: service-url:defaultZone:http://localhost:8761/eureka/
-  instance:
-    instance-enabled-onit: false
-
+server:
+  port: 8081
 spring:
   application:
     name: history-service
@@ -24,7 +21,3 @@ spring:
         format_sql: false
   liquibase:
     change-log: classpath:/db/changelog/db.changelog.xml
-
-server:
-  port: 8081
-

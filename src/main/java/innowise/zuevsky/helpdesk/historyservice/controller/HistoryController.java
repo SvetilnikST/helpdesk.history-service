@@ -7,12 +7,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/historys")
 @RequiredArgsConstructor
 public class HistoryController implements IHistoryController {
+
+    @GetMapping("/message")
+    public String test() {
+        return "message";
+    }
+
+
     @Override
     @GetMapping("/{historyId}")
     public HistoryDto getHistory(Long historyId) {
@@ -22,6 +30,6 @@ public class HistoryController implements IHistoryController {
     @Override
     @GetMapping("/{ticketId}")
     public List<HistoryDto> getHistorysByTicketId() {
-        return null;
+        return new ArrayList<>();
     }
 }
