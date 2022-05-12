@@ -1,8 +1,22 @@
 server:
-  port: 8081
+  port: 8082
+
+eureka:
+  instance:
+    client:
+      serviceUrl:
+        defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+
+    prefer-ip-address: true
+
 spring:
   application:
-    name: history-service
+    name: helpdesk-history-service
+  security:
+        oauth2:
+          resourceserver:
+            jwt:
+              jwk-set-uri: http://localhost:8484/auth/realms/Helpdesk-gateway-app/protocol/openid-connect/certs
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
