@@ -3,20 +3,17 @@ server:
 
 eureka:
   instance:
-    client:
-      serviceUrl:
-        defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
-
     prefer-ip-address: true
+  client:
+    serviceUrl:
+        defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+    register-with-eureka: true
+    fetch-registry: true
 
 spring:
   application:
     name: helpdesk-history-service
-  security:
-        oauth2:
-          resourceserver:
-            jwt:
-              jwk-set-uri: http://localhost:8484/auth/realms/Helpdesk-gateway-app/protocol/openid-connect/certs
+
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
@@ -35,3 +32,20 @@ spring:
         format_sql: false
   liquibase:
     change-log: classpath:/db/changelog/db.changelog.xml
+
+keycloak:
+  realm: Helpdesk-gateway-app
+  auth-server-url: http://localhost:8484/auth
+  ssl-required: external
+  resource: helpdesk-gateway-client
+  use-resource-role-mappings: true
+  bearer-only: true
+  credentials:
+    secret: kQLLSS6xBgUTgwPgSGrWAVrWJtp7czGg
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

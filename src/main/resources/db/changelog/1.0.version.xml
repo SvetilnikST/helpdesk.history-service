@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="1" author="Svetlana Shishaeva">
+        <comment>1.0.version. Create table Histories</comment>
+        <sql>
+            CREATE TABLE Histories
+            (
+                id           INT PRIMARY KEY,
+                ticket_id    INT NOT NULL,
+                created      DATE NOT NULL,
+                action       VARCHAR( 300 ) NOT NULL,
+                user_id      INT NOT NULL,
+                description  VARCHAR( 500 )
+            );
+        </sql>
+        <rollback>DROP TABLE Histories;</rollback>
+    </changeSet>
+
+    <changeSet id="2" author="Svetlana Shishaeva">
+        <comment>1.0.version. Create sequence for id in Histories</comment>
+        <sql>
+            CREATE SEQUENCE histories_id_seq START 100 INCREMENT 50;
+        </sql>
+        <rollback>DROP SEQUENCE histories_id_seq;</rollback>
+    </changeSet>
+
+</databaseChangeLog>

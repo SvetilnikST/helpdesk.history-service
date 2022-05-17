@@ -1,31 +1,22 @@
-package innowise.zuevsky.helpdesk.historyservice.domain;
+package innowise.zuevsky.helpdesk.historyservice.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @Setter
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "historys")
+@NoArgsConstructor
+@Table(name = "histories")
 public class History {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "historys_id_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "histories_id_seq")
     @Column(name = "id", nullable = false)
     private Long id;
 
@@ -34,8 +25,10 @@ public class History {
 
     @Column(name = "created", updatable = false)
     @CreationTimestamp
+
     private LocalDateTime created;
 
+    @Column(name = "action")
     private String action;
 
     @Column(name = "user_Id")
