@@ -1,44 +1,5 @@
-server:
-  port: 8082
-
-eureka:
-  instance:
-    prefer-ip-address: true
-  client:
-    serviceUrl:
-        defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
-    register-with-eureka: true
-    fetch-registry: true
-
 spring:
   application:
-    name: helpdesk-history-service
-
-  mvc:
-    pathmatch:
-      matching-strategy: ant_path_matcher
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5434/helpdeskhistorydb
-    username: helpdesk-history-user
-    password: "1234qwerty"
-  jpa:
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQL95Dialect
-        show_sql: false
-        temp:
-          use_jdbc_metadata_defaults: false
-        format_sql: false
-  liquibase:
-    change-log: classpath:/db/changelog/db.changelog.xml
-
-keycloak:
-  realm: Helpdesk-gateway-app
-  auth-server-url: http://localhost:8484/auth
-  ssl-required: external
-  resource: helpdesk-gateway-client
-  use-resource-role-mappings: true
-  bearer-only: true
-  credentials:
-    secret: kQLLSS6xBgUTgwPgSGrWAVrWJtp7czGg
+    name: history-service
+  config:
+    import: optional:configserver:http://localhost:8888
