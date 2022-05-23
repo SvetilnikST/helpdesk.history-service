@@ -20,7 +20,4 @@ public interface IHistoryController {
     @ApiImplicitParam(name = "ticketId", value = "Ticket ID", required = true, dataType = "Long", paramType = "path")
     Page<HistoryDto> getHistoriesByTicketId(@PageableDefault(size = 5) Pageable pageable, @PathVariable Long ticketId);
 
-    @ApiOperation(value = "Save history"  )
-    void saveHistory( HistoryDto historyDto);
-
 }

@@ -8,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import static innowise.helpdesk.historyservice.specification.HistorySpecification.hasTicketId;
 import static org.springframework.data.jpa.domain.Specification.where;
@@ -27,11 +26,6 @@ public class HistoryService {
     public Page<HistoryDto> getHistoriesByTicketId(Long ticketId, Pageable pageable) {
         return historyRepository.findAll(where(hasTicketId(ticketId)), pageable)
                 .map(historyMapper::mapHistoryToSaveHistoryDto);
-    }
-
-    @Transactional
-    public void saveHistory(HistoryDto historyDto) {
-        historyRepository.save(historyMapper.mapHistoryDtoToHistory(historyDto));
     }
 
 }

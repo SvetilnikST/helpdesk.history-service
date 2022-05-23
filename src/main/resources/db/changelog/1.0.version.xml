@@ -22,7 +22,7 @@
     </changeSet>
 
     <changeSet id="2" author="Svetlana Shishaeva">
-        <comment>1.0.version. Create sequence for id in Histories</comment>
+        <comment>Create sequence for id in Histories</comment>
         <sql>
             CREATE SEQUENCE histories_id_seq START 100 INCREMENT 50;
         </sql>

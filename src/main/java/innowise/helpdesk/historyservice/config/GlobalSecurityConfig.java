@@ -19,7 +19,7 @@ import org.springframework.security.web.authentication.session.SessionAuthentica
 public class GlobalSecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
 
     protected static final String[] WHITELIST = {
-            "/api/**"
+            "/api/**", "/actuator/**"
     };
 
     @Override

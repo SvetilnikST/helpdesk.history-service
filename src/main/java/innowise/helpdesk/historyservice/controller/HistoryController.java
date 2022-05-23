@@ -9,8 +9,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
-
 @RestController
 @RequestMapping("/api/histories")
 @RequiredArgsConstructor
@@ -28,12 +26,6 @@ public class HistoryController implements IHistoryController {
     @GetMapping("/historyByTicketId/{ticketId}")
     public Page<HistoryDto> getHistoriesByTicketId(@PageableDefault(size = 5) Pageable pageable, Long ticketId) {
         return historyService.getHistoriesByTicketId(ticketId,pageable);
-    }
-
-    @Override
-    @PostMapping
-    public void saveHistory(@Valid @RequestBody HistoryDto historyDto){
-        historyService.saveHistory(historyDto);
     }
 
 }
