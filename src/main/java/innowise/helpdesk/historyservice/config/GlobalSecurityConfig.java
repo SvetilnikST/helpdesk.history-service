@@ -19,7 +19,7 @@ import org.springframework.security.web.authentication.session.SessionAuthentica
 public class GlobalSecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
 
     protected static final String[] WHITELIST = {
-            "/api/**", "/actuator/**"
+            "/histories-service/**", "/actuator/**"
     };
 
     @Override
@@ -34,7 +34,7 @@ public class GlobalSecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.OPTIONS).permitAll()
-                .antMatchers( "/api/histories/**").hasAnyRole("EMPLOYEE","MANAGER","ENGINEER")
+                .antMatchers( "/histories-service/histories/**").hasAnyRole("EMPLOYEE","MANAGER","ENGINEER")
                 .antMatchers(WHITELIST).authenticated()
                 .anyRequest().permitAll();
     }

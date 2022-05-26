@@ -4,7 +4,7 @@ volumes:
   pg_project:
 
 services:
-  pg_db:
+  histories-pg_db:
     image: postgres
     restart: always
     environment:

@@ -3,9 +3,9 @@ spring:
     name: history-service
   config:
     import: optional:configserver:http://localhost:8888
-    name: history-service
   cloud:
     config:
+      name: history-service
       discovery:
-        service-id: config-server
         enabled: true
+        service-id: config-server

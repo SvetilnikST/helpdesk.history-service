@@ -10,7 +10,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/histories")
+@RequestMapping("/histories-service/histories")
 @RequiredArgsConstructor
 public class HistoryController implements IHistoryController {
 
